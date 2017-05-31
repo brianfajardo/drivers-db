@@ -6,7 +6,10 @@ const routes = require('./routes')
 const app = express()
 
 mongoose.Promise = global.Promise
-mongoose.connect('mongodb://localhost/drivers')
+
+if (process.env.NODE_ENV !== 'test') {
+  mongoose.connect('mongodb://localhost/drivers')
+}
 
 // Middleware
 app.use(bodyParser.json())
