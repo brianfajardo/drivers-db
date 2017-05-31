@@ -7,6 +7,10 @@
     ],
     "rules": {
         "semi": 0,
-        "no-console": 0
+        "no-console": 0,
+        "padded-blocks": 0
+    },
+    "env": {
+        "mocha": true
     }
 }
