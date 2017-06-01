@@ -15,7 +15,8 @@ if (process.env.NODE_ENV !== 'test') {
 app.use(bodyParser.json())
 routes(app)
 
-// Note: routes flows into below app.use
+// Controllers will catch errors in `next`
+// which will flow out into below
 
 app.use((err, req, res, next) => {
   res.send({ error: err._message })

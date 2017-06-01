@@ -20,4 +20,10 @@ module.exports = {
       .then(driver => res.send(driver))
       .catch(next)
   },
+
+  delete(req, res, next) {
+    Driver.findByIdAndRemove({ _id: req.params.id })
+      .then(driver => res.status(204).send(driver))
+      .catch(next)
+  },
 }
