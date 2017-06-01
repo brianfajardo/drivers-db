@@ -27,4 +27,22 @@ describe('Drivers controller', () => {
           })
       })
   })
+
+  it('should update a driver by ID on PUT request to /api/drivers/:id', (done) => {
+    const driver = new Driver({ email: 'driver@test.com', available: false })
+
+    driver.save()
+      .then(() => {
+        request(app)
+          .put(`/api/drivers/${driver._id}`)
+          .send({ available: true })
+          .end(() => {
+            Driver.findOne({ email: 'driver@test.com' })
+              .then((driver) => {
+                assert(driver.available)
+                done()
+              })
+          })
+      })
+  })
 })

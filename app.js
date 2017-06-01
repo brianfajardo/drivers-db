@@ -11,10 +11,14 @@ if (process.env.NODE_ENV !== 'test') {
   mongoose.connect('mongodb://localhost/drivers')
 }
 
-// Middleware
+// Execution of middleware is important for use
 app.use(bodyParser.json())
-
-// Note: middlewares should always be placed before routes
 routes(app)
+
+// Note: routes flows into below app.use
+
+app.use((err, req, res, next) => {
+  res.send({ error: err._message })
+})
 
 module.exports = app
