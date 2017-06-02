@@ -8,7 +8,9 @@
     "rules": {
         "semi": 0,
         "no-console": 0,
-        "padded-blocks": 0
+        "padded-blocks": 0,
+        "comma-dangle": 0,
+        "no-underscore-dangle": 0
     },
     "env": {
         "mocha": true

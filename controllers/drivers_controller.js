@@ -6,6 +6,19 @@ module.exports = {
     res.send({ message: 'Hello!' })
   },
 
+  index(req, res, next) {
+    // Ex. http://google.com?lng=25&lat=55
+    // pull lng and lat from query
+    const { lng, lat } = req.query
+
+    Driver.geoNear(
+      { type: 'Point', coordinates: [lng, lat] },
+      { spherical: true, maxDistance: 200000 }
+    )
+      .then(drivers => res.send(drivers))
+      .catch(next)
+  },
+
   create(req, res, next) {
     Driver.create(req.body)
       .then(driver => res.send(driver))

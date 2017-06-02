@@ -1,18 +1,18 @@
 const mongoose = require('mongoose')
-const GpsSchema = require('./schemas/gps_schema')
+const GpsLocationSchema = require('./schemas/gps_location_schema')
 
 const { Schema } = mongoose
 
 const DriverSchema = new Schema({
   email: {
     type: String,
-    required: true,
+    required: true
   },
   available: {
     type: Boolean,
-    default: false,
+    default: false
   },
-  geometry: GpsSchema,
+  geometry: GpsLocationSchema
 })
 
 const Driver = mongoose.model('driver', DriverSchema)

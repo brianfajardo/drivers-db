@@ -4,9 +4,9 @@ const app = require('../app')
 
 describe('Express app', () => {
 
-  it('should handle a GET request to /api/drivers', (done) => {
+  it('should handle a GET request to /api', (done) => {
     request(app)
-      .get('/api/drivers')
+      .get('/api')
       .end((err, res) => {
         assert(res.body.message === 'Hello!')
         done()

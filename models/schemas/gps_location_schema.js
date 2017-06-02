@@ -2,15 +2,13 @@ const mongoose = require('mongoose')
 
 const { Schema } = mongoose
 
-const GpsSchema = new Schema({
+module.exports = new Schema({
   type: {
-    String,
-    default: 'Point',
+    type: String,
+    default: 'Point'
   },
   coordinates: {
     type: [Number],
-    index: '2dsphere',
-  },
+    index: '2dsphere'
+  }
 })
-
-module.exports = GpsSchema
