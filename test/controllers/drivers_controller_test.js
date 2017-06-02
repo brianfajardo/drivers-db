@@ -68,7 +68,7 @@ describe('Drivers controller', () => {
       email: 'driver1@test.com',
       geometry: {
         type: 'Point',
-        coordinates: [79.3832, 43.6532],
+        coordinates: [79.3832, 43.6532]
       }
     })
     const miamiDriver = new Driver({
@@ -84,7 +84,8 @@ describe('Drivers controller', () => {
         request(app)
           .get('/api/drivers?lng=-80&lat=25')
           .end((err, response) => {
-            console.log(response)
+            assert(response.body.length === 1)
+            assert(response.body[0].obj.email === 'driver2@test.com')
             done()
           })
       })

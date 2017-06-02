@@ -2,7 +2,7 @@ const Driver = require('../models/drivers_model')
 
 module.exports = {
 
-  greet(req, res, next) {
+  greet(req, res) {
     res.send({ message: 'Hello!' })
   },
 
