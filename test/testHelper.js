@@ -10,6 +10,10 @@ before((done) => {
 beforeEach((done) => {
   const { drivers } = mongoose.connection.collections
   drivers.drop()
+    // ensureIndex makes sure before the tests are ran that an index is in place
+    // over the geometry.coordinates prop in the driver collection.
+    // Required to do when making geography queries.
+    .then(() => drivers.ensureIndex({ 'geometry.coordinates:': '2dsphere' }))
     .then(() => done())
     .catch(() => done())
 })
